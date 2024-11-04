@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
+import { ProductImages } from '@/lib/interface';
 
 const prisma = new PrismaClient();
 

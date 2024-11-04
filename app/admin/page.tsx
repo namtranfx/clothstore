@@ -5,12 +5,12 @@ import React from "react";
 import {
   Table,
   TableBody,
-  TableCaption,
   TableCell,
   TableHead,
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Products, StoreInfo } from "@/lib/interface";
 const itemsPerPage = 5;
 const Admin: React.FC = () => {
   const [products, setProducts] = useState<Products[]>([]);

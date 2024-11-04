@@ -1,17 +1,21 @@
-import React from 'react'
-import Hero from './Hero'
-import Featured from './Featured'
+import React from "react";
+import Hero from "./Hero";
+import Featured from "./Featured";
+import { Products, StoreInfo } from "@/lib/interface";
 interface LandingPageProp {
-    LandingData: StoreInfo
-    featuredProducts: Products[]    
+  LandingData: StoreInfo;
+  featuredProducts: Products[];
 }
-const LandingPage: React.FC<LandingPageProp> = ({LandingData, featuredProducts}) => {
+const LandingPage: React.FC<LandingPageProp> = ({
+  LandingData,
+  featuredProducts,
+}) => {
   return (
-    <section className='flex flex-col w-full'>
-        <Hero storeInfo={LandingData} h={920} isHome={true}/>
-        <Featured featureProducts={featuredProducts}/>
+    <section className="flex flex-col w-full">
+      <Hero storeInfo={LandingData} h={920} isHome={true} />
+      <Featured featureProducts={featuredProducts} />
     </section>
-  )
-}
+  );
+};
 
-export default LandingPage
+export default LandingPage;

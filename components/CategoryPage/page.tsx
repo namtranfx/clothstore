@@ -3,6 +3,7 @@ import { getLandingData, getProductsByCategory } from "@/app/action";
 import { ProductCard } from "../CustomCard/CustomCard";
 import Hero from "../LandingPage/Hero";
 import { useEffect, useState } from "react";
+import { Products, StoreInfo } from "@/lib/interface";
 
 interface ProductListPageProps {
   category: string;
@@ -19,7 +20,7 @@ const ProductListPage: React.FC<ProductListPageProps> = ({ category }) => {
       setFProducts(data2.prodlist);
     };
     fetchDataAsync();
-  }, []);
+  }, [category]);
   return (
     <>
       {pageInfo && <Hero storeInfo={pageInfo} h={200} isHome={false} />}

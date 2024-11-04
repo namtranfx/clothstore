@@ -25,8 +25,7 @@ export default function EditProduct({ params }: { params: Promise<{ id: string }
   }, [id]);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>,
-    index?: number
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ) => {
     const { name, value } = e.target;
     setBanner((prev) => ({ ...prev, [name]: value }));

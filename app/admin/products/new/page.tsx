@@ -1,6 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
+import { Products } from '@/lib/interface';
 
 export default function CreateProduct() {
   const router = useRouter();

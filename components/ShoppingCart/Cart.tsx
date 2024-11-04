@@ -1,7 +1,5 @@
-import exp from 'constants'
 import React from 'react'
 import { BsHandbag } from 'react-icons/bs'
-import { Sheet } from '../ui/sheet'
 
 const Cart = () => {
   return (

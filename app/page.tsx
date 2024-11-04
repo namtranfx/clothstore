@@ -2,6 +2,7 @@
 import LandingPage from "@/components/LandingPage/page";
 import { useEffect, useState } from "react";
 import { getLandingData, getProductsByCategory } from "./action";
+import { Products, StoreInfo } from "@/lib/interface";
 
 export default function Home() {
   const [storeInfo, setStoreInfo] = useState<StoreInfo>();
@@ -11,10 +12,16 @@ export default function Home() {
     const fetchDataAsync = async () => {
       const data = await getLandingData("home");
       const data2 = await getProductsByCategory("featured");
-      setStoreInfo((data.PageInfo)[0]);
+      setStoreInfo(data.PageInfo[0]);
       setFProducts(data2.prodlist);
     };
     fetchDataAsync();
   }, []);
-  return <div>{storeInfo && featureProds && <LandingPage LandingData={storeInfo} featuredProducts={featureProds}/>}</div>;
+  return (
+    <div>
+      {storeInfo && featureProds && (
+        <LandingPage LandingData={storeInfo} featuredProducts={featureProds} />
+      )}
+    </div>
+  );
 }

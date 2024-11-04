@@ -8,6 +8,7 @@ import {
   CarouselPrevious,
 } from "../ui/carousel";
 import Link from "next/link";
+import { Products } from "@/lib/interface";
 
 interface FeatureProps {
   featureProducts: Products[];
@@ -34,12 +35,12 @@ export const ProductList: React.FC<ProductListProps> = ({ products }) => {
     <>
       <div className="md:col-start-2 md:col-span-4 product-carousel">
         {products?.slice(0, 3).map((product: Products) => (
-           <ProductCard key={product.id} product={product} />
+          <ProductCard key={product.id} product={product} />
         ))}
       </div>
       <Carousel className="md:hidden mt-6 max-w-[16rem]">
         <CarouselContent>
-          {products.slice(0, 3).map((product: Products, index) => (
+          {products.slice(0, 3).map((product: Products) => (
             <CarouselItem key={product.id}>
               <ProductCard product={product} />
             </CarouselItem>

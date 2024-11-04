@@ -1,20 +1,20 @@
-interface StoreInfo {
+export interface StoreInfo {
     id: number
     store_name: string 
     cover_image_url: string
     category: string
 };
-interface MenuItemType {
+export interface MenuItemType {
     id: string,
     title: string,
     url: string
 };
-interface ProductImages {
+export interface ProductImages {
     id: number
     product_id: number 
     image_url: string
 };
-interface Products {
+export interface Products {
     id: number
     product_name: string
     product_description: string

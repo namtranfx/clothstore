@@ -1,16 +1,17 @@
 import { NextApiRequest } from "next";
 import { PrismaClient } from "@prisma/client";
 import { NextRequest, NextResponse } from "next/server";
+import { ProductImages } from "@/lib/interface";
 
 const prisma = new PrismaClient();
 
 export async function DELETE(
-  req: NextApiRequest,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
-  const { id } = params;
+  const { id } = await params;
   console.log(id);
-  if (req.method === "DELETE") {
+  if (req.method === "DELETE") { 
     try {
       const deletedProduct = await prisma.products.delete({
         where: {
@@ -38,11 +39,11 @@ interface requestData {
 }
 
 export async function PUT(
-  req: NextRequest,
-  { params }: { params: { id: string } }
+  req: NextRequest & NextApiRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
   const data: requestData = await req.json();
-  const { id } = params;
+  const { id } = await params;
   try {
     const updatedProduct = await prisma.products.update({
       where: {
@@ -63,15 +64,15 @@ export async function PUT(
     });
     // Xoá tất cả các `ProductImages` cũ liên kết với sản phẩm
     await prisma.productImages.deleteMany({
-        where: { product_id: Number(id) },
+      where: { product_id: Number(id) },
     });
     // Thêm các `ProductImages` mới
     await prisma.productImages.createMany({
-        data: data.ProductImages.map((image: { image_url: string }) => ({
-          product_id: Number(id),
-          image_url: image.image_url,
-        })),
-      });
+      data: data.ProductImages.map((image: { image_url: string }) => ({
+        product_id: Number(id),
+        image_url: image.image_url,
+      })),
+    });
     return NextResponse.json(updatedProduct);
   } catch (error) {
     console.error("Error updating product:", error);

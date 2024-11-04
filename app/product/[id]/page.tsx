@@ -1,6 +1,7 @@
 'use client';
 import { getProductByID } from '@/app/action';
 import ProductPage from '@/components/ProductPage/page';
+import { Products } from '@/lib/interface';
 import React, { use, useEffect, useState } from 'react'
 
 const Page = ({params}: {params: Promise<{id: string}>}) => {
@@ -14,7 +15,7 @@ const Page = ({params}: {params: Promise<{id: string}>}) => {
             setProduct(data.prod);
         }
         getProduct(id);
-    }, []);
+    }, [id]);
     console.log("Page: ", product);
   return (
     <>
