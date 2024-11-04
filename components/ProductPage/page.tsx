@@ -51,6 +51,8 @@ const ProductPreview: React.FC<ProductPreviewProps> = ({ product }) => {
                   <CardContent className="flex flex-col aspect-square items-center justify-center p-2">
                     <Image
                       src={prodimg.image_url}
+                      width={200}
+                      height={300}
                       alt={"product details"}
                       className="h-[320px] md:h-[480px] relative "
                     />
