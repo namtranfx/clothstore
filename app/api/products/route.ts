@@ -1,6 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import { NextApiResponse } from 'next';
 
 const prisma = new PrismaClient();
 
@@ -33,7 +32,7 @@ interface requestData {
     ProductImages: ProductImages[]
 }
 
-export async function POST(req: NextRequest, res: NextApiResponse) {
+export async function POST(req: NextRequest) {
     const data: requestData = await req.json();
     //console.log("data post: ", data);
     try {
