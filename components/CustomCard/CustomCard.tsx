@@ -18,8 +18,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
       <Link target="_blank" href={`/product/${product.id}`}>
         <Image
           src={product.ProductImages[0].image_url}
-          width={200}
-          height={300}
+          width={320}
+          height={480}
           alt={product.product_name}
           className="w-48 h-[320px] md:h-[480px] object-contain md:w-full relative rounded-xl"
         />
